@@ -1,0 +1,41 @@
+
+.container {
+    max-width: 100%;
+    margin: auto;
+    padding: 100px;
+    overflow-x: auto;
+  }
+  
+  .even-row {
+    background-color: #77dd77; 
+  }
+  
+  .odd-row {
+    background-color: #84b6f4; 
+  }
+  
+  .table td {
+    color: white; 
+  }
+  .gradient-bg {
+    padding: 10px 20px;
+    display: flex; /* Usa flexbox */
+    justify-content: space-between; /* Espacia los elementos */
+    align-items: center; /* Centra verticalmente */
+    height: 75px;
+    background: rgb(108, 11, 179);
+    background: linear-gradient(90deg, rgba(108, 11, 179, 1) 0%, rgba(51, 88, 190, 1) 35%, rgba(106, 201, 225, 1) 100%);
+}
+
+.title {
+    color: #fff;
+    margin: 0; /* Elimina márgenes */
+}
+
+.btn {
+    background-color: #fff; /* Ajusta el color del botón */
+    color: #000; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado */
+    cursor: pointer; /* Cambia el cursor al pasar */
+}

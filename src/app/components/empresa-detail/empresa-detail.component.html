@@ -1,0 +1,100 @@
+<mat-card>
+    <h3 *ngIf="!isEditMode" class="title">Crear Empresa</h3>
+    <h3 *ngIf="isEditMode" class="title">Editar Empresa</h3>
+    <p class="title">Utiliza los campos para {{ isEditMode ? 'actualizar' : 'crear' }} los datos de la empresa</p>
+  
+    <div *ngIf="errores.length > 0" class="error-messages">
+      <mat-error *ngFor="let error of errores">*{{ error }}</mat-error>
+    </div>
+  
+    <div style="text-align: right; margin-top: 20px;">
+      <button mat-button (click)="guardarCambios()">Guardar</button>
+      <button mat-button (click)="cancelar()">Cancelar</button>
+    </div>
+  
+    <mat-grid-list cols="2" rowHeight="100px">
+      <!-- Nombre Comercial -->
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width" color="warn">
+          <mat-label>Nombre Comercial</mat-label>
+          <input matInput [(ngModel)]="empresa.nombre_comercial" required [ngClass]="{'input-error': errores.includes('El nombre comercial es requerido.') }">
+          <mat-error *ngIf="errores.includes('El nombre comercial es requerido.')">
+            El nombre comercial es requerido.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+  
+      <!-- Razón Social -->
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width" color="warn">
+          <mat-label>Razón Social</mat-label>
+          <input matInput [(ngModel)]="empresa.razon_social" required [ngClass]="{'input-error': errores.includes('La razón social es requerida.') }">
+          <mat-error *ngIf="errores.includes('La razón social es requerida.')">
+            La razón social es requerida.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+  
+      <!-- Teléfono -->
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width" color="warn">
+          <mat-label>Teléfono</mat-label>
+          <input matInput [(ngModel)]="empresa.telefono" required [ngClass]="{'input-error': errores.includes('El teléfono debe contener entre 7 y 15 dígitos.') }">
+          <mat-error *ngIf="errores.includes('El teléfono debe contener entre 7 y 15 dígitos.')">
+            El teléfono debe contener entre 7 y 15 dígitos.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+  
+      <!-- Correo Electrónico -->
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width" color="warn">
+          <mat-label>Correo Electrónico</mat-label>
+          <input matInput [(ngModel)]="empresa.correo_electronico" required 
+                 [ngClass]="{'input-error': errores.includes('Introduzca un correo electrónico válido.') }" 
+                 [disabled]="isEditMode">
+          <mat-error *ngIf="errores.includes('Introduzca un correo electrónico válido.')">
+            Introduzca un correo electrónico válido.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      
+  
+      <!-- NIT -->
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width" color="warn">
+          <mat-label>NIT</mat-label>
+          <input matInput [(ngModel)]="empresa.nit" required [ngClass]="{'input-error': errores.includes('El NIT es requerido.') }">
+          <mat-error *ngIf="errores.includes('El NIT es requerido.')">
+            El NIT es requerido.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+  
+      <!-- Estado -->
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width" color="warn">
+          <mat-label>Estado</mat-label>
+          <mat-select [(ngModel)]="empresa.estado" required [ngClass]="{'input-error': errores.includes('El estado es requerido.') }">
+            <mat-option [value]="true">Activo</mat-option>
+            <mat-option [value]="false">Desactivado</mat-option>
+          </mat-select>
+          <mat-error *ngIf="errores.includes('El estado es requerido.')">
+            El estado es requerido.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+  
+      <!-- Dirección -->
+      <mat-grid-tile colspan="2">
+        <mat-form-field class="example-full-width" color="warn">
+          <mat-label>Dirección</mat-label>
+          <input matInput [(ngModel)]="empresa.direccion" required [ngClass]="{'input-error': errores.includes('La dirección es requerida.') }">
+          <mat-error *ngIf="errores.includes('La dirección es requerida.')">
+            La dirección es requerida.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card>
+  
