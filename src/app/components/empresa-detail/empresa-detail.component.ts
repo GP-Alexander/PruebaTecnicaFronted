@@ -69,9 +69,9 @@ guardarCambios() {
     this.errores.push('El teléfono debe contener entre 7 y 15 dígitos.');
   }
   // Excluir validación del correo electrónico
-  // if (!this.empresa.correo_electronico || !/\S+@\S+\.\S+/.test(this.empresa.correo_electronico)) {
-  //   this.errores.push('Introduzca un correo electrónico válido.');
-  // }
+   if (!this.empresa.correo_electronico || !/\S+@\S+\.\S+/.test(this.empresa.correo_electronico)) {
+     this.errores.push('Introduzca un correo electrónico válido.');
+   }
   if (!this.empresa.nit) {
     this.errores.push('El NIT es requerido.');
   }
@@ -90,7 +90,7 @@ guardarCambios() {
   const { correo_electronico, ...empresaData } = this.empresa;
 
   if (this.isEditMode) {
-    this.empresasService.updateEmpresa(empresaData).subscribe(
+    this.empresasService.updateEmpresa(this.empresa).subscribe(
       response => {
         Swal.fire({
           title: 'Éxito!',
@@ -104,7 +104,7 @@ guardarCambios() {
       }
     );
   } else {
-    this.empresasService.createEmpresa(empresaData).subscribe(
+    this.empresasService.createEmpresa(this.empresa).subscribe(
       response => {
         Swal.fire({
           title: 'Éxito!',
